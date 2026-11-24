@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CondoCost: the real monthly cost of a Florida condo</title>
+<meta name="description" content="See the true monthly cost of a Florida condo: mortgage, dues, special assessments, taxes and insurance. Compare condos, get the post-Surfside buyer checklist, and decode association documents.">
+<meta name="theme-color" content="#17695f">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="CondoCost: the real monthly cost of a Florida condo">
+<meta property="og:description" content="Mortgage, dues, assessments, taxes, insurance, in one number. Plus the Florida condo buyer checklist.">
+<meta property="og:image" content="/icons/icon-512.png">
+<style>
+:root{--ink:#1f2b33;--muted:#66747d;--line:#e3e6e1;--paper:#fff;--wash:#f6f5f1;--teal:#17695f;--teal2:#e7f2ef;--coral:#d0694b;--amber:#a5650f;--amberbg:#fff4e2;--red:#b3261e;--redbg:#fdecea;--green:#1f7a4d;
+  --c1:#17695f;--c2:#d0694b;--c3:#e0a33b;--c4:#4f7fa3;--c5:#8a6fb0;--c6:#7fb3a6;--c7:#b9b2a3;--c8:#c9c4b8;
+  --r:16px;--font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--wash);color:var(--ink);font:15px/1.5 var(--font);padding-top:env(safe-area-inset-top,0)}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:16px 16px 100px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.4px}
+.brand i{width:34px;height:34px;border-radius:11px;background:var(--teal);color:#fff;display:grid;place-items:center;font-style:normal}
+.brand span{color:var(--teal)}
+.prop{display:flex;gap:6px;align-items:center;min-width:0}
+.prop select{max-width:190px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;font-size:13px;font-weight:600}
+h1{font-size:clamp(25px,4vw,34px);letter-spacing:-1px;line-height:1.12;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 18px;max-width:640px}
+.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--teal);margin-bottom:6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:0 8px 28px rgba(31,43,51,.05)}
+.card h2{font-size:15px;margin:0 0 12px;letter-spacing:-.2px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:14px;align-items:start}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{display:grid;gap:5px;min-width:0}.f.full{grid-column:1/-1}
+.f label{font-size:12px;font-weight:700;color:#4c5b63}
+.f .hint{font-size:11px;color:var(--muted)}
+.f input,.f select{width:100%;border:1px solid #d9dfda;background:#fff;border-radius:10px;padding:10px 11px;font-size:15px;outline:none;min-width:0}
+.f input:focus,.f select:focus{border-color:#5f9e91;box-shadow:0 0 0 3px rgba(23,105,95,.13)}
+.money{position:relative}.money:before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}.money input{padding-left:22px}
+.pct{position:relative}.pct:after{content:"%";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.inline{display:flex;gap:8px;align-items:center;font-size:13px}
+.inline input{width:auto}
+details.sec{border-top:1px solid var(--line);padding:12px 0 2px}
+details.sec:first-of-type{border-top:0;padding-top:0}
+details.sec summary{cursor:pointer;font-weight:750;font-size:14px;list-style:none;display:flex;justify-content:space-between;padding-bottom:10px}
+details.sec summary::-webkit-details-marker{display:none}
+details.sec summary span{color:var(--muted);font-weight:600;font-size:13px}
+.assess{display:grid;grid-template-columns:1.4fr 1fr .7fr .8fr auto;gap:8px;align-items:end;margin-bottom:8px}
+@media(max-width:560px){.assess{grid-template-columns:1fr 1fr}.assess .f:first-child{grid-column:1/-1}}
+.btn{border:0;border-radius:11px;background:var(--teal);color:#fff;padding:11px 15px;font-weight:720;font-size:14px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.btn:hover{filter:brightness(.94)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--teal);border:1px solid #bfd8d1}
+.btn.ghost{background:transparent;color:var(--muted);padding:8px 10px;min-height:36px}
+.btn.sm{padding:7px 11px;min-height:36px;font-size:13px}
+.btn.coral{background:var(--coral)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.x{border:0;background:none;color:var(--muted);font-size:20px;cursor:pointer;min-width:40px;min-height:40px}
+.total{font-size:44px;font-weight:800;letter-spacing:-1.6px;line-height:1}
+.total small{font-size:15px;color:var(--muted);font-weight:600;letter-spacing:0}
+.sub{font-size:12px;color:var(--muted)}
+.stack{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:16px 0 12px;background:var(--line)}
+.stack i{display:block;height:100%}
+.legend{display:grid;gap:7px}
+.legend div{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;font-size:13px}
+.legend b{font-variant-numeric:tabular-nums}
+.sw{width:12px;height:12px;border-radius:3px}
+.callout{border-radius:12px;padding:11px 13px;font-size:13px;margin-top:12px}
+.callout.warn{background:var(--amberbg);color:#6e4a0f}.callout.ok{background:var(--teal2);color:#174d45}.callout.bad{background:var(--redbg);color:#7a1f19}
+.chart{display:flex;align-items:flex-end;gap:3px;height:120px;border-bottom:1px solid var(--line);margin-top:6px}
+.chart div{flex:1;border-radius:3px 3px 0 0;background:#bcd9d1;min-width:0;position:relative}
+.chart div.hasA{background:var(--coral)}
+.axis{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:4px 6px calc(4px + env(safe-area-inset-bottom));z-index:9}
+nav.tabs button{border:0;background:none;padding:8px 2px;font-size:12px;font-weight:700;color:#7d8a90;display:grid;justify-items:center;gap:1px;cursor:pointer;min-height:52px}
+nav.tabs button span{font-size:19px;line-height:1}
+nav.tabs button[aria-selected=true]{color:var(--teal)}
+@media(min-width:821px){nav.tabs{position:sticky;top:0;bottom:auto;border:1px solid var(--line);border-radius:14px;margin:0 0 18px;box-shadow:0 6px 20px rgba(0,0,0,.04)}.wrap{padding-bottom:40px}}
+section.page{display:none}section.page.on{display:block}
+table.cmp{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+table.cmp th,table.cmp td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+table.cmp th:first-child,table.cmp td:first-child{text-align:left;position:sticky;left:0;background:#fff}
+table.cmp thead th{font-size:12px;color:var(--teal);max-width:140px;overflow:hidden;text-overflow:ellipsis}
+table.cmp tr.tot td{font-weight:800;font-size:15px}
+td.best{color:var(--green);font-weight:800}
+.scroll{overflow-x:auto}
+.ck{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid #eef0ec}
+.ck:first-of-type{border-top:0}
+.ck b{font-size:14px;display:block}.ck small{color:var(--muted);font-size:12px;display:block}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:7px 10px;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted);min-height:36px}
+.seg button[aria-pressed=true].y{background:var(--teal2);color:var(--teal)}
+.seg button[aria-pressed=true].n{background:var(--redbg);color:var(--red)}
+.seg button[aria-pressed=true].u{background:#f0f0ec;color:var(--ink)}
+.score{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 2px}
+.pill{border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;background:#f0f0ec}
+.pill.g{background:var(--teal2);color:var(--teal)}.pill.r{background:var(--redbg);color:var(--red)}.pill.a{background:var(--amberbg);color:var(--amber)}
+.script{white-space:pre-wrap;background:#fafaf7;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;margin:10px 0}
+.hero{background:linear-gradient(135deg,#17695f,#0f4d46);color:#fff;border-radius:18px;padding:22px;margin-bottom:14px}
+.hero h2{font-size:22px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{margin:0 0 14px;color:#d6ebe6;font-size:14px}
+.hero ul{margin:0 0 16px;padding-left:18px;color:#e8f4f1;font-size:14px;display:grid;gap:3px}
+.hero .btn{background:#fff;color:var(--teal)}
+.hero .btn.ghostw{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.drop{border:1.5px dashed #9fc4ba;border-radius:14px;background:#f5faf8;padding:20px;text-align:center;position:relative}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop b{display:block;color:#245a50}
+.files{display:grid;gap:8px;margin-top:12px}
+.file{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;font-size:13px;border:1px solid var(--line);border-radius:11px;padding:9px 10px}
+.file .ic{width:32px;height:32px;border-radius:8px;background:#fbefeb;color:#b4614d;display:grid;place-items:center;font-size:10px;font-weight:800}
+.st{font-size:11px;font-weight:700;border-radius:999px;padding:3px 8px;background:#f0f0ec;white-space:nowrap}
+.st.done{background:var(--teal2);color:var(--teal)}.st.err{background:var(--redbg);color:var(--red)}.st.run{background:var(--amberbg);color:var(--amber)}
+.flag{border:1px solid var(--line);border-left:4px solid var(--c7);border-radius:10px;padding:10px 12px;margin-bottom:8px;font-size:13px}
+.flag.high{border-left-color:var(--red)}.flag.medium{border-left-color:var(--c3)}.flag.low{border-left-color:var(--c4)}.flag.good{border-left-color:var(--green)}
+.flag b{display:block;font-size:14px}
+.pg{display:inline-block;font-size:11px;color:var(--muted);background:#f2f3ef;border-radius:6px;padding:1px 6px;margin-left:4px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:13px}
+.kv span:nth-child(even){text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.sample-tag{display:inline-block;background:var(--amberbg);color:var(--amber);font-size:11px;font-weight:800;border-radius:6px;padding:2px 7px;margin-bottom:8px}
+.toast{position:fixed;left:50%;bottom:86px;transform:translate(-50%,10px);opacity:0;background:#1f3238;color:#fff;padding:10px 14px;border-radius:10px;font-size:13px;transition:.2s;z-index:30;pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.mini{display:none}
+@media(max-width:820px){.mini{display:flex;position:fixed;left:10px;right:10px;bottom:calc(68px + env(safe-area-inset-bottom));z-index:8;background:#17695f;color:#fff;border-radius:14px;padding:10px 14px;justify-content:space-between;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:13px;border:0;cursor:pointer}
+  .mini b{font-size:20px;letter-spacing:-.5px}.wrap{padding-bottom:160px}}
+footer{font-size:11px;color:var(--muted);text-align:center;margin-top:24px}
+footer a{color:var(--muted)}
+.status{font-size:13px;color:var(--muted);min-height:1.2em;margin:6px 0}.status.err{color:var(--red)}
+@media print{nav.tabs,.noprint,header.top .prop,.toast{display:none!important}section.page{display:none!important}section.page.printme{display:block!important}body{background:#fff}.card{box-shadow:none;break-inside:avoid}.wrap{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><i>C</i><div>Condo<span>Cost</span></div></div>
+    <div class="prop noprint">
+      <select id="propSel" aria-label="Choose a property"></select>
+      <button class="btn ghost sm" id="newProp" title="Add a property">＋ New</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-p="cost" aria-selected="true"><span>⌂</span>Cost</button>
+    <button role="tab" data-p="compare" aria-selected="false"><span>⇆</span>Compare</button>
+    <button role="tab" data-p="check" aria-selected="false"><span>✓</span>Checklist</button>
+    <button role="tab" data-p="decoder" aria-selected="false"><span>✦</span>Decoder</button>
+  </nav>
+
+  <!-- ===================== COST ===================== -->
+  <section class="page on" id="p-cost">
+    <div class="eyebrow">Florida condo cost snapshot</div>
+    <h1>What will this condo really cost each month?</h1>
+    <p class="lead">Mortgage, association dues, special assessments, taxes and insurance, all in one number. Your entries stay on this device.</p>
+    <div class="grid2">
+      <div class="card noprint">
+        <details class="sec" open><summary>The property <span id="sumProp"></span></summary>
+          <div class="fields">
+            <div class="f full"><label for="name">Building or unit name</label><input id="name" data-k="name" maxlength="80" placeholder="e.g. Bayview Towers #504"></div>
+            <div class="f"><label for="city">City</label><input id="city" data-k="city" maxlength="50" placeholder="Hollywood"></div>
+            <div class="f"><label for="county">County</label><select id="county" data-k="county"><option>Broward</option><option>Miami-Dade</option><option>Palm Beach</option><option>Other Florida county</option></select></div>
+            <div class="f"><label for="stories">Building height</label><select id="stories" data-k="stories"><option value="">Not sure</option><option value="low">1–2 habitable stories</option><option value="mid">3–5 stories</option><option value="high">6+ stories</option></select></div>
+            <div class="f"><label for="built">Year built</label><input id="built" data-k="built" inputmode="numeric" maxlength="4" placeholder="1985"></div>
+          </div>
+        </details>
+        <details class="sec" open><summary>Purchase &amp; mortgage <span id="sumMort"></span></summary>
+          <div class="fields">
+            <div class="f"><label for="price">Price</label><div class="money"><input id="price" data-k="price" inputmode="decimal" placeholder="300,000"></div></div>
+            <div class="f"><label for="downPct">Down payment</label><div class="pct"><input id="downPct" data-k="downPct" inputmode="decimal" placeholder="20"></div></div>
+            <div class="f"><label for="rate">Interest rate</label><div class="pct"><input id="rate" data-k="rate" inputmode="decimal" placeholder="6.75"></div></div>
+            <div class="f"><label for="years">Loan term</label><select id="years" data-k="years"><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option><option value="10">10 years</option></select></div>
+            <label class="f full inline"><input type="checkbox" id="cash" data-k="cash"> Paying cash (no mortgage), or I already own it outright</label>
+          </div>
+        </details>
+        <details class="sec" open><summary>Association <span id="sumAssoc"></span></summary>
+          <div class="fields">
+            <div class="f full"><label for="dues">Monthly association dues</label><div class="money"><input id="dues" data-k="dues" inputmode="decimal" placeholder="815"></div><span class="hint">Paid quarterly? Divide the quarterly amount by 3.</span></div>
+          </div>
+          <div style="margin-top:12px"><label style="font-size:12px;font-weight:700;color:#4c5b63">Special assessments</label>
+            <p class="sub" style="margin:2px 0 8px">Approved or expected. Use "starts in" for ones that haven't begun.</p>
+            <div id="assessList"></div>
+            <button class="btn sec sm" id="addAssess" type="button">＋ Add an assessment</button>
+          </div>
+        </details>
+        <details class="sec" open><summary>Taxes, insurance &amp; more <span id="sumOther"></span></summary>
+          <div class="fields">
+            <div class="f"><label for="taxMode">Property tax</label><select id="taxMode" data-k="taxMode"><option value="pct">Estimate from price</option><option value="amount">I know the yearly bill</option></select></div>
+            <div class="f" id="taxPctF"><label for="taxPct">Tax rate</label><div class="pct"><input id="taxPct" data-k="taxPct" inputmode="decimal" placeholder="1.9"></div><span class="hint">Check the county property appraiser. Homestead lowers it.</span></div>
+            <div class="f" id="taxAmtF" hidden><label for="taxAmount">Yearly tax bill</label><div class="money"><input id="taxAmount" data-k="taxAmount" inputmode="decimal" placeholder="5,400"></div></div>
+            <div class="f"><label for="ho6">HO-6 insurance (monthly)</label><div class="money"><input id="ho6" data-k="ho6" inputmode="decimal" placeholder="90"></div></div>
+            <div class="f"><label for="flood">Flood insurance (monthly)</label><div class="money"><input id="flood" data-k="flood" inputmode="decimal" placeholder="0"></div></div>
+            <div class="f"><label for="utilities">Utilities not in dues (monthly)</label><div class="money"><input id="utilities" data-k="utilities" inputmode="decimal" placeholder="140"></div></div>
+            <div class="f"><label for="other">Other monthly (parking, PMI…)</label><div class="money"><input id="other" data-k="other" inputmode="decimal" placeholder="0"></div></div>
+            <div class="f full"><label for="income">Household monthly income before tax (optional)</label><div class="money"><input id="income" data-k="income" inputmode="decimal" placeholder="7,500"></div><span class="hint">Shows what share of income this home would take.</span></div>
+          </div>
+        </details>
+      </div>
+
+      <div>
+        <div class="card" id="resultCard">
+          <div class="sub" id="resName">Your condo</div>
+          <div class="total" id="total">$0<small> /month</small></div>
+          <div class="sub" id="totalNote">Fill in the numbers on the left.</div>
+          <div class="stack" id="stack" aria-hidden="true"></div>
+          <div class="legend" id="legend"></div>
+          <div id="callouts"></div>
+        </div>
+        <div class="card">
+          <h2>Next 24 months <span class="sub" id="chartNote"></span></h2>
+          <div class="chart" id="chart" role="img" aria-label="Monthly cost over the next 24 months"></div>
+          <div class="axis"><span>Now</span><span>12 mo</span><span>24 mo</span></div>
+          <div class="sub" style="margin-top:8px"><span class="sw" style="display:inline-block;background:var(--coral);vertical-align:middle"></span> months with a special assessment payment</div>
+        </div>
+        <div class="row noprint">
+          <button class="btn" id="saveBtn">Save this condo</button>
+          <button class="btn sec" id="printBtn">Print / save PDF</button>
+          <button class="btn sec" id="shareBtn">Copy summary</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPARE ===================== -->
+  <section class="page" id="p-compare">
+    <div class="eyebrow">Side by side</div>
+    <h1>Compare condos</h1>
+    <p class="lead">Every condo you save shows up here. The lowest number in each row is green.</p>
+    <div class="card"><div class="scroll"><table class="cmp" id="cmpTable"></table></div>
+      <p class="sub" id="cmpEmpty" hidden>Save two or more condos on the Cost tab to compare them here.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CHECKLIST ===================== -->
+  <section class="page" id="p-check">
+    <div class="eyebrow">Post-Surfside Florida buyer checklist</div>
+    <h1>Before you buy: <span id="ckName">this condo</span></h1>
+    <p class="lead">Mark what you've confirmed. Anything marked "No" or still unknown turns into questions you can send the association or your agent.</p>
+    <div class="card"><div class="score" id="ckScore"></div></div>
+    <div id="ckGroups"></div>
+    <div class="card">
+      <h2>Your questions <button class="btn sm" id="copyQs">Copy as an email</button></h2>
+      <div class="script" id="qText"></div>
+      <p class="sub">A checklist for gathering information, not legal, engineering or financial advice. Florida condo law changes often; a Florida real estate attorney can review the documents.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DECODER ===================== -->
+  <section class="page" id="p-decoder">
+    <div class="hero noprint" id="decHero">
+      <h2>Document Decoder</h2>
+      <p>Upload the association's budget, special assessment notice, SIRS, milestone inspection or minutes. Get the numbers, red flags and questions in plain English, with page numbers so you can check every point.</p>
+      <ul>
+        <li>Dues, assessments, reserves and insurance pulled out for you</li>
+        <li>Red flags and good signs, each tied to a page</li>
+        <li>One tap to load the numbers into your cost snapshot</li>
+        <li>Up to <span class="docLimit">6</span> documents per property. Documents are read, then discarded, never stored.</li>
+      </ul>
+      <div class="row">
+        <button class="btn" id="buyBtn">Decode my documents · <span class="priceLbl">$39</span></button>
+        <button class="btn ghostw" id="sampleBtn">See a sample report</button>
+      </div>
+    </div>
+    <div class="status" id="decStatus" role="status"></div>
+
+    <div class="card noprint" id="uploadCard" hidden>
+      <h2>Upload documents <span class="sub" id="creditLbl"></span></h2>
+      <div class="drop"><input type="file" id="pdfIn" accept="application/pdf" multiple><b>Tap to choose PDFs</b><span class="sub">One document at a time works best. Max 4 MB each.</span></div>
+      <div class="files" id="fileList"></div>
+    </div>
+
+    <div id="report"></div>
+    <div class="card noprint" id="codeCard">
+      <h2>Already paid on another device?</h2>
+      <div class="row"><input id="codeIn" placeholder="Paste your report code" style="flex:1;min-width:200px;border:1px solid #d9dfda;border-radius:10px;padding:10px"><button class="btn sec sm" id="codeBtn">Use code</button><button class="btn ghost sm" id="copyCode" hidden>Copy my code</button></div>
+    </div>
+  </section>
+
+  <footer class="noprint">CondoCost · Estimates from your entries and your documents. Not legal, financial or engineering advice.<br><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a id="supportLink" href="#">Support</a></footer>
+</div>
+<button class="mini noprint" id="mini" type="button" hidden><span>Estimated monthly cost</span><b id="miniTotal">$0</b></button>
+<div class="toast" id="toast" role="status"></div>
+
+<script type="module">
+import { n, breakdown, projection, assessmentTotal, associationShare, money } from "./calc.js";
+
+/* ===== Settings you can change ===== */
+const CONFIG = {
+  price: "$39",
+  docsPerReport: 6,
+  supportEmail: "REPLACE_WITH_YOUR_EMAIL",
+};
+
+const $ = (s) => document.querySelector(s);
+const KEY = "cc-props-v1", KEY_CUR = "cc-current", KEY_TOKEN = "cc-report-token";
+const load = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
+const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+const toast = (m) => { const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2600); };
+const uid = () => Math.random().toString(36).slice(2, 9);
+const blank = () => ({ id: uid(), name: "", city: "", county: "Broward", stories: "", built: "", price: "", downPct: "20", rate: "6.75", years: "30", cash: false,
+  dues: "", assessments: [], taxMode: "pct", taxPct: "1.9", taxAmount: "", ho6: "", flood: "", utilities: "", other: "", income: "", checklist: {}, decoded: null, saved: false });
+
+let props = load(KEY, []);
+if (!props.length) props = [blank()];
+let cur = props.find((p) => p.id === load(KEY_CUR, "")) || props[0];
+const persist = () => { save(KEY, props); save(KEY_CUR, cur.id); };
+
+$("#supportLink").href = "mailto:" + CONFIG.supportEmail;
+document.querySelectorAll(".priceLbl").forEach((e) => (e.textContent = CONFIG.price));
+document.querySelectorAll(".docLimit").forEach((e) => (e.textContent = CONFIG.docsPerReport));
+
+/* ---------- tabs ---------- */
+const pages = ["cost", "compare", "check", "decoder"];
+function show(p) {
+  if (!pages.includes(p)) p = "cost";
+  document.querySelectorAll("section.page").forEach((s) => s.classList.toggle("on", s.id === "p-" + p));
+  document.querySelectorAll("nav.tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.p === p));
+  if (location.hash.slice(1) !== p) history.replaceState(null, "", p === "cost" ? location.pathname + location.search : "#" + p);
+  $("#mini").hidden = p !== "cost";
+  if (p === "compare") renderCompare();
+  if (p === "check") renderChecklist();
+  if (p === "decoder") renderDecoder();
+  scrollTo(0, 0);
+}
+document.querySelectorAll("nav.tabs button").forEach((b) => (b.onclick = () => show(b.dataset.p)));
+
+/* ---------- property selector ---------- */
+const label = (p, i) => p.name || (p.city ? "Condo in " + p.city : "Condo " + (i + 1));
+function renderSel() {
+  const s = $("#propSel"); s.replaceChildren();
+  props.forEach((p, i) => { const o = document.createElement("option"); o.value = p.id; o.textContent = label(p, i); s.append(o); });
+  s.value = cur.id;
+}
+$("#propSel").onchange = (e) => { cur = props.find((p) => p.id === e.target.value); persist(); fillForm(); renderAll(); };
+$("#newProp").onclick = () => { cur = blank(); props.push(cur); persist(); renderSel(); fillForm(); renderAll(); show("cost"); $("#name").focus(); };
+
+/* ---------- form ---------- */
+const inputs = document.querySelectorAll("[data-k]");
+function fillForm() {
+  inputs.forEach((el) => { const v = cur[el.dataset.k]; if (el.type === "checkbox") el.checked = !!v; else el.value = v ?? ""; });
+  renderAssess(); taxVis();
+}
+inputs.forEach((el) => {
+  el.addEventListener("input", () => { cur[el.dataset.k] = el.type === "checkbox" ? el.checked : el.value; if (el.dataset.k === "taxMode") taxVis(); if (el.dataset.k === "name") renderSel(); persist(); renderAll(); });
+  el.addEventListener("change", () => el.dispatchEvent(new Event("input")));
+});
+function taxVis() { const amt = cur.taxMode === "amount"; $("#taxPctF").hidden = amt; $("#taxAmtF").hidden = !amt; }
+function renderAssess() {
+  const box = $("#assessList"); box.replaceChildren();
+  cur.assessments.forEach((a, i) => {
+    const row = document.createElement("div"); row.className = "assess";
+    row.innerHTML = `<div class="f"><label>What for</label><input data-a="desc" maxlength="60" placeholder="Roof / concrete restoration"></div>
+      <div class="f"><label>Your unit's total</label><div class="money"><input data-a="amount" inputmode="decimal" placeholder="4,680"></div></div>
+      <div class="f"><label>Months</label><input data-a="months" inputmode="numeric" placeholder="12"></div>
+      <div class="f"><label>Starts in (mo)</label><input data-a="startsIn" inputmode="numeric" placeholder="0"></div>
+      <button class="x" type="button" aria-label="Remove assessment">×</button>`;
+    row.querySelectorAll("[data-a]").forEach((inp) => { inp.value = a[inp.dataset.a] ?? ""; inp.oninput = () => { a[inp.dataset.a] = inp.value; persist(); renderAll(); }; });
+    row.querySelector(".x").onclick = () => { cur.assessments.splice(i, 1); persist(); renderAssess(); renderAll(); };
+    box.append(row);
+  });
+}
+$("#addAssess").onclick = () => { cur.assessments.push({ desc: "", amount: "", months: "12", startsIn: "0" }); persist(); renderAssess(); renderAll(); };
+
+/* ---------- results ---------- */
+const PARTS = [["mortgage", "Mortgage (principal + interest)", "--c1"], ["dues", "Association dues", "--c4"], ["assessments", "Special assessments", "--c2"], ["tax", "Property tax", "--c3"],
+  ["insurance", "HO-6 insurance", "--c5"], ["flood", "Flood insurance", "--c6"], ["utilities", "Utilities", "--c7"], ["other", "Other", "--c8"]];
+function renderCost() {
+  const b = breakdown(cur), p = cur;
+  $("#resName").textContent = label(p, props.indexOf(p)) + (p.city ? " · " + p.city : "");
+  $("#total").innerHTML = `${money(b.total)}<small> /month</small>`;
+  $("#miniTotal").textContent = money(b.total) + "/mo";
+  const proj = projection(p, 24), later = proj[23];
+  $("#totalNote").textContent = b.total ? (Math.abs(later - b.total) > 1 ? `About ${money(later)}/month once current assessments end.` : "Includes every cost you entered.") : "Fill in the numbers on the left.";
+  const st = $("#stack"), lg = $("#legend"); st.replaceChildren(); lg.replaceChildren();
+  PARTS.forEach(([k, lab, c]) => {
+    const v = b.parts[k]; if (v <= 0.5) return;
+    const i = document.createElement("i"); i.style.width = (v / b.total) * 100 + "%"; i.style.background = `var(${c})`; st.append(i);
+    const d = document.createElement("div"); d.innerHTML = `<span class="sw" style="background:var(${c})"></span><span></span><b>${money(v)}</b>`; d.children[1].textContent = lab; lg.append(d);
+  });
+  // insights
+  const co = $("#callouts"); co.replaceChildren();
+  const add = (cls, html) => { const d = document.createElement("div"); d.className = "callout " + cls; d.innerHTML = html; co.append(d); };
+  if (b.total > 0) {
+    const share = associationShare(p);
+    if (share > 0) add(share > 0.4 ? "warn" : "ok", `<b>${Math.round(share * 100)}%</b> of the monthly cost goes to the association (dues + assessments). That part can rise after each budget or a new assessment.`);
+    const aTot = assessmentTotal(p);
+    if (aTot > 0) add("warn", `Special assessments total <b>${money(aTot)}</b> for this unit. Ask whether any more are planned after the SIRS and milestone inspection.`);
+    if (n(p.income) > 0) { const r = b.total / n(p.income); add(r > 0.36 ? "bad" : r > 0.28 ? "warn" : "ok", `This home would take <b>${Math.round(r * 100)}%</b> of household income before tax. Many lenders look for about 28–36% or less.`); }
+    if (!n(p.ho6)) add("warn", "No HO-6 insurance entered. Most lenders require it, and the association's policy usually doesn't cover the inside of your unit.");
+    const yr = parseInt(p.built, 10);
+    if (yr && new Date().getFullYear() - yr >= 25 && p.stories !== "low") add("warn", `Built ${yr}: buildings of 3+ habitable stories this age need a milestone inspection. See the Checklist tab.`);
+  }
+  // chart
+  const ch = $("#chart"); ch.replaceChildren(); const max = Math.max(...proj, 1);
+  proj.forEach((v, i) => { const d = document.createElement("div"); d.style.height = (v / max) * 100 + "%"; const hasA = (p.assessments || []).some((a) => breakdown({ assessments: [a] }, i).parts.assessments > 0); if (hasA) d.className = "hasA"; d.title = `Month ${i + 1}: ${money(v)}`; ch.append(d); });
+  $("#chartNote").textContent = b.total ? `${money(Math.min(...proj))} – ${money(Math.max(...proj))}` : "";
+  $("#sumMort").textContent = b.parts.mortgage ? money(b.parts.mortgage) + "/mo" : p.cash ? "cash" : "";
+  $("#sumAssoc").textContent = b.parts.dues + b.parts.assessments ? money(b.parts.dues + b.parts.assessments) + "/mo" : "";
+  $("#sumOther").textContent = b.parts.tax + b.parts.insurance + b.parts.flood + b.parts.utilities + b.parts.other ? money(b.parts.tax + b.parts.insurance + b.parts.flood + b.parts.utilities + b.parts.other) + "/mo" : "";
+  $("#sumProp").textContent = p.city || "";
+}
+$("#mini").onclick = () => $("#resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
+$("#saveBtn").onclick = () => { if (!cur.name) { cur.name = label(cur, props.indexOf(cur)); } cur.saved = true; persist(); renderSel(); toast("Saved. Add another condo with ＋ New to compare."); };
+$("#printBtn").onclick = () => printPages(["p-cost"]);
+$("#shareBtn").onclick = async () => {
+  const b = breakdown(cur);
+  const lines = PARTS.filter(([k]) => b.parts[k] > 0.5).map(([k, lab]) => `• ${lab}: ${money(b.parts[k])}`);
+  const text = `${label(cur, 0)}${cur.city ? ", " + cur.city : ""}\nEstimated monthly cost: ${money(b.total)}\n${lines.join("\n")}\n${assessmentTotal(cur) ? `Special assessments total: ${money(assessmentTotal(cur))}\n` : ""}(Estimate from CondoCost)`;
+  try { await navigator.clipboard.writeText(text); toast("Summary copied."); } catch { toast("Couldn't copy on this browser."); }
+};
+function printPages(ids) {
+  document.querySelectorAll("section.page").forEach((s) => s.classList.toggle("printme", ids.includes(s.id)));
+  print();
+}
+
+/* ---------- compare ---------- */
+function renderCompare() {
+  const list = props.filter((p) => p.saved || p === cur).filter((p) => n(p.price) || n(p.dues));
+  const t = $("#cmpTable"); t.replaceChildren();
+  $("#cmpEmpty").hidden = list.length >= 2;
+  if (!list.length) return;
+  const bs = list.map((p) => breakdown(p));
+  const head = document.createElement("thead"); const hr = document.createElement("tr"); hr.append(Object.assign(document.createElement("th"), { textContent: "" }));
+  list.forEach((p, i) => hr.append(Object.assign(document.createElement("th"), { textContent: label(p, props.indexOf(p)) })));
+  head.append(hr); t.append(head);
+  const tb = document.createElement("tbody");
+  const rows = [["Price", (p) => n(p.price)], ...PARTS.map(([k, lab]) => [lab, (p, b) => b.parts[k]]),
+    ["Assessments still owed", (p) => assessmentTotal(p)], ["Checklist red flags", (p) => ckCounts(p).no, true], ["Still unknown", (p) => ckCounts(p).unk, true], ["Total per month", (p, b) => b.total]];
+  rows.forEach(([lab, f, isCount]) => {
+    const vals = list.map((p, i) => f(p, bs[i]));
+    if (vals.every((v) => !v) && lab !== "Total per month") return;
+    const tr = document.createElement("tr"); if (lab === "Total per month") tr.className = "tot";
+    tr.append(Object.assign(document.createElement("td"), { textContent: lab }));
+    const min = Math.min(...vals);
+    vals.forEach((v) => { const td = document.createElement("td"); td.textContent = isCount ? String(v) : money(v); if (list.length > 1 && v === min && vals.some((x) => x !== min)) td.className = "best"; tr.append(td); });
+    tb.append(tr);
+  });
+  t.append(tb);
+}
+
+/* ---------- checklist ---------- */
+const CK = [
+  ["Building safety", [
+    ["sirs", "The building has a completed Structural Integrity Reserve Study (SIRS)", "Required for buildings with 3+ habitable stories. The deadline for most was Dec 31, 2025.", "Has the association completed its Structural Integrity Reserve Study (SIRS)? Can I get a copy and the date it was completed?"],
+    ["milestone", "Milestone inspection done, or not required yet", "Applies to buildings 3+ habitable stories once they reach a certain age.", "Is a milestone inspection required for this building? If so, when was it done, and was a Phase 2 inspection required?"],
+    ["repairs", "No major structural repairs required or pending", "Ask about concrete restoration, balconies, roof, elevators.", "Are any structural or major repairs required or planned? What is the cost estimate and timeline, and how will they be paid for?"],
+  ]],
+  ["Money", [
+    ["reserves", "Reserves are funded at the level the SIRS recommends", "Underfunded reserves often lead to special assessments.", "Are reserves fully funded at the level the SIRS recommends? What is the current reserve balance?"],
+    ["noPause", "Reserve funding hasn't been paused, waived or reduced", "A 2025 law allows a temporary pause after a milestone inspection.", "Has reserve funding been paused, waived or reduced in the last three years? Is a pause planned?"],
+    ["noAssess", "No special assessments approved or being discussed", "Check the last 12 months of board minutes.", "Are any special assessments approved, proposed or being discussed? How much per unit and when?"],
+    ["noLoan", "The association has no loan or line of credit", "Loan payments often show up as higher dues.", "Does the association have any loans or lines of credit? What are the balance and monthly payments?"],
+    ["delinq", "Few owners are behind on payments", "High delinquency can mean higher dues for everyone and loan problems.", "What percentage of owners are 60+ days delinquent on dues or assessments?"],
+    ["duesHist", "Dues haven't jumped sharply lately", "Ask for the last 3 budgets.", "How have monthly dues changed over the last three budgets, and what increase is expected next year?"],
+  ]],
+  ["Insurance", [
+    ["master", "Master policy is in place with a reasonable wind deductible", "Your share of a big deductible could become an assessment.", "Who is the master insurance carrier, when does the policy renew, and what is the windstorm/hurricane deductible?"],
+    ["floodZone", "You know the flood zone and flood insurance cost", "Lenders may require flood insurance.", "What flood zone is the building in, and does the association carry flood insurance on the building?"],
+  ]],
+  ["Rules & legal", [
+    ["litig", "No lawsuits involving the association", "Litigation can affect loans and insurance.", "Is the association involved in any lawsuits, as plaintiff or defendant?"],
+    ["rentals", "Rental rules fit your plans", "Minimum lease terms, rental caps, approval waiting periods.", "What are the rental rules: minimum lease length, caps on rentals, approval process and fees?"],
+    ["pets", "Pet, parking and vehicle rules work for you", "Some buildings restrict motorcycles, trucks, or pet size.", "What are the pet, parking and vehicle rules (including motorcycles, trucks and guest parking)?"],
+    ["docs", "You've received the full condo document package", "Budget, SIRS, inspection reports, minutes, declaration, rules, insurance.", "Please send the full document package: current budget, SIRS, milestone inspection reports, the last 12 months of board minutes, declaration, rules and insurance summary."],
+  ]],
+];
+const ckCounts = (p) => { const c = p.checklist || {}; let yes = 0, no = 0, unk = 0; CK.forEach(([, items]) => items.forEach(([k]) => (c[k] === "y" ? yes++ : c[k] === "n" ? no++ : unk++))); return { yes, no, unk }; };
+function renderChecklist() {
+  $("#ckName").textContent = label(cur, props.indexOf(cur));
+  const box = $("#ckGroups"); box.replaceChildren(); cur.checklist ||= {};
+  CK.forEach(([group, items]) => {
+    const card = document.createElement("div"); card.className = "card";
+    const h = document.createElement("h2"); h.textContent = group; card.append(h);
+    items.forEach(([k, title, hint]) => {
+      const row = document.createElement("div"); row.className = "ck";
+      const t = document.createElement("div"); t.innerHTML = "<b></b><small></small>"; t.querySelector("b").textContent = title; t.querySelector("small").textContent = hint;
+      const seg = document.createElement("div"); seg.className = "seg"; seg.setAttribute("role", "group"); seg.setAttribute("aria-label", title);
+      [["y", "Yes"], ["n", "No"], ["u", "?"]].forEach(([v, lab]) => {
+        const b = document.createElement("button"); b.className = v; b.textContent = lab; b.setAttribute("aria-pressed", (cur.checklist[k] || "u") === v);
+        b.onclick = () => { cur.checklist[k] = v; persist(); renderChecklist(); };
+        seg.append(b);
+      });
+      row.append(t, seg); card.append(row);
+    });
+    box.append(card);
+  });
+  const c = ckCounts(cur);
+  $("#ckScore").innerHTML = `<span class="pill g">✓ ${c.yes} confirmed</span><span class="pill r">✕ ${c.no} red flag${c.no === 1 ? "" : "s"}</span><span class="pill a">? ${c.unk} to ask about</span>`;
+  $("#qText").textContent = questionsEmail();
+}
+function questionsEmail() {
+  const qs = []; CK.forEach(([, items]) => items.forEach(([k, , , q]) => { if ((cur.checklist || {})[k] !== "y") qs.push(q); }));
+  (cur.decoded?.questions || []).forEach((q) => { if (!qs.includes(q)) qs.push(q); });
+  if (!qs.length) return "You've confirmed everything on the list. Nice work.";
+  return `Hello,\n\nI'm considering ${cur.name ? cur.name : "a unit"}${cur.city ? " in " + cur.city : ""} and would appreciate answers to the following:\n\n${qs.map((q, i) => `${i + 1}. ${q}`).join("\n")}\n\nThank you!`;
+}
+$("#copyQs").onclick = async () => { try { await navigator.clipboard.writeText(questionsEmail()); toast("Questions copied. Paste them into an email."); } catch { toast("Couldn't copy on this browser."); } };
+
+/* ---------- decoder ---------- */
+const token = () => load(KEY_TOKEN, null);
+let credit = null;
+async function api(path, data) {
+  let r; try { r = await fetch("/api/" + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...data, token: token() }) }); } catch { throw { code: "offline" }; }
+  if ((r.headers.get("content-type") || "").includes("application/json")) { let o = null; try { o = await r.json(); } catch {} if (!r.ok) throw { code: (o && o.error) || "server_error" }; return o; }
+  const text = await r.text(); if (text.includes("<<STREAM_ERROR>>")) throw { code: "server_error" };
+  const t = text.replace(/```(?:json)?/g, ""); const i = t.search(/[\[{]/); if (i < 0) throw { code: "invalid_json" };
+  try { return JSON.parse(t.slice(i, t.lastIndexOf(t[i] === "[" ? "]" : "}") + 1)); } catch { throw { code: "invalid_json" }; }
+}
+async function refreshCredit() {
+  if (!token()) { credit = null; return; }
+  try { credit = await api("credit", {}); } catch { credit = credit || null; }
+}
+function renderDecoder() {
+  const paid = !!(credit && (credit.ok || credit.reason === "limit_reached"));
+  $("#uploadCard").hidden = !paid;
+  $("#buyBtn").textContent = paid ? `Buy another report · ${CONFIG.price}` : `Decode my documents · ${CONFIG.price}`;
+  $("#copyCode").hidden = !token();
+  if (paid) $("#creditLbl").textContent = `${Math.max(0, credit.limit - credit.used)} of ${credit.limit} documents left`;
+  renderReport(cur.decoded, false);
+}
+$("#buyBtn").onclick = async (e) => {
+  const b = e.currentTarget; b.disabled = true; $("#decStatus").className = "status"; $("#decStatus").textContent = "Opening secure checkout…";
+  try { const { url } = await api("checkout", {}); location.href = url; }
+  catch { b.disabled = false; $("#decStatus").className = "status err"; $("#decStatus").textContent = "Checkout isn't available right now. Please try again shortly."; }
+};
+$("#codeBtn").onclick = async () => {
+  const v = $("#codeIn").value.trim(); if (!v) return; const old = token(); save(KEY_TOKEN, v); await refreshCredit();
+  if (credit && (credit.ok || credit.reason === "limit_reached")) { toast("Report code accepted."); $("#codeIn").value = ""; }
+  else { if (old) save(KEY_TOKEN, old); else localStorage.removeItem(KEY_TOKEN); await refreshCredit(); toast("That code isn't valid."); }
+  renderDecoder();
+};
+$("#copyCode").onclick = async () => { try { await navigator.clipboard.writeText(token()); toast("Code copied. Keep it private."); } catch { toast(token()); } };
+
+const fileB64 = (f) => new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(",")[1]); r.onerror = bad; r.readAsDataURL(f); });
+const errMsg = (c) => ({ file_too_large: "Too big. Upload just the key pages (under 4 MB).", not_pdf: "That isn't a PDF.", limit_reached: "This report has used all its documents.", payment_required: "Your report code isn't active.",
+  rate_limited: "Busy right now. Try again in a minute.", file_rejected: "This PDF couldn't be read. It may be password-protected or damaged.", offline: "You're offline.", invalid_json: "The result came back unclear. Try again." }[c] || "Something went wrong. Try again.");
+$("#pdfIn").onchange = async (e) => {
+  const files = [...e.target.files]; e.target.value = "";
+  for (const f of files) {
+    const row = document.createElement("div"); row.className = "file";
+    row.innerHTML = `<span class="ic">PDF</span><span><b></b><br><span class="sub"></span></span><span class="st run">Reading…</span>`;
+    row.querySelector("b").textContent = f.name; row.querySelector(".sub").textContent = (f.size / 1048576).toFixed(1) + " MB";
+    $("#fileList").append(row);
+    const st = row.querySelector(".st");
+    if (f.size > 4.2 * 1048576) { st.className = "st err"; st.textContent = "Too big"; row.querySelector(".sub").textContent = errMsg("file_too_large"); continue; }
+    try {
+      const out = await api("decode", { pdf: await fileB64(f) });
+      out.fileName = f.name;
+      cur.decoded = mergeDecoded(cur.decoded, out); persist();
+      st.className = "st done"; st.textContent = "Done";
+      renderReport(cur.decoded, false);
+    } catch (err) { st.className = "st err"; st.textContent = "Not read"; row.querySelector(".sub").textContent = errMsg(err.code); }
+    await refreshCredit(); renderDecoder();
+  }
+};
+function mergeDecoded(acc, d) {
+  acc = acc || { docs: [], monthlyDues: [], assessments: [], litigation: [], redFlags: [], goodSigns: [], questions: [], reserves: null, sirs: null, milestone: null, insurance: null };
+  const tagged = (arr) => (arr || []).map((x) => ({ ...x, doc: d.fileName }));
+  acc.docs.push({ name: d.fileName, type: d.docType, date: d.docDate, summary: d.summary, association: d.association });
+  ["monthlyDues", "assessments", "litigation", "redFlags", "goodSigns"].forEach((k) => acc[k].push(...tagged(d[k])));
+  (d.questions || []).forEach((q) => { if (!acc.questions.includes(q)) acc.questions.push(q); });
+  const better = (a, b, key) => (b && (key ? b[key] : true) ? { ...b, doc: d.fileName } : a);
+  if (d.reserves && Object.values(d.reserves).some((v) => v !== null)) acc.reserves = { ...d.reserves, doc: d.fileName };
+  acc.sirs = better(acc.sirs, d.sirs, "mentioned"); acc.milestone = better(acc.milestone, d.milestone, "mentioned");
+  if (d.insurance && Object.values(d.insurance).some((v) => v !== null)) acc.insurance = { ...d.insurance, doc: d.fileName };
+  return acc;
+}
+const TYPE = { budget: "Budget", special_assessment_notice: "Special assessment notice", reserve_study: "Reserve study", sirs: "SIRS", milestone_inspection: "Milestone inspection", insurance: "Insurance", meeting_minutes: "Board minutes", financial_statement: "Financial statement", rules_or_declaration: "Declaration / rules", estoppel: "Estoppel certificate", other: "Document" };
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pg = (x) => (x && x.page ? `<span class="pg">${esc(x.doc ? x.doc.replace(/\.pdf$/i, "") + " · " : "")}p. ${esc(x.page)}</span>` : "");
+function renderReport(d, sample) {
+  const box = $("#report"); box.replaceChildren(); if (!d) return;
+  const sev = { high: 0, medium: 1, low: 2 };
+  const flags = [...d.redFlags].sort((a, b) => (sev[a.severity] ?? 3) - (sev[b.severity] ?? 3));
+  const kv = [];
+  d.monthlyDues.forEach((x) => kv.push([`Monthly dues${x.unit ? " (" + x.unit + ")" : ""}`, money(x.amount) + pg(x)]));
+  d.assessments.forEach((x) => kv.push([`Assessment: ${x.description}${x.status && x.status !== "unknown" ? " (" + x.status + ")" : ""}`, (x.perUnit ? money(x.perUnit) + "/unit" : x.buildingTotal ? money(x.buildingTotal) + " total" : "—") + (x.installments ? ` · ${x.installments} payments` : "") + pg(x)]));
+  const r = d.reserves; if (r) { if (r.balance != null) kv.push(["Reserve balance", money(r.balance) + pg(r)]); if (r.percentFunded != null) kv.push(["Reserves funded", r.percentFunded + "%" + pg(r)]); if (r.recommendedAnnual != null) kv.push(["Recommended yearly reserves", money(r.recommendedAnnual) + pg(r)]); if (r.budgetedAnnual != null) kv.push(["Budgeted yearly reserves", money(r.budgetedAnnual) + pg(r)]); if (r.waivedOrReduced) kv.push(["Reserves waived or reduced", "Yes" + pg(r)]); }
+  if (d.sirs?.mentioned) kv.push(["SIRS", (d.sirs.completed ? "Completed" : d.sirs.completed === false ? "Not completed" : "Mentioned") + (d.sirs.date ? " · " + esc(d.sirs.date) : "") + pg(d.sirs)]);
+  if (d.milestone?.mentioned) kv.push(["Milestone inspection", esc(d.milestone.phase || "Mentioned") + (d.milestone.repairsRequired ? " · repairs required" : "") + (d.milestone.repairDeadline ? " by " + esc(d.milestone.repairDeadline) : "") + pg(d.milestone)]);
+  const ins = d.insurance; if (ins) { if (ins.annualPremium != null) kv.push(["Master insurance premium (yearly)", money(ins.annualPremium) + pg(ins)]); if (ins.windDeductible) kv.push(["Wind deductible", esc(ins.windDeductible) + pg(ins)]); }
+  const html = `
+    <div class="card">${sample ? '<span class="sample-tag">SAMPLE · fictional building</span>' : ""}
+      <h2>Decoded: ${esc(d.docs[0]?.association || label(cur, props.indexOf(cur)))} <span class="row noprint"><button class="btn sec sm" id="applyBtn"${sample ? " hidden" : ""}>Use in my cost snapshot</button><button class="btn ghost sm" id="printRep">Print</button></span></h2>
+      ${d.docs.map((x) => `<p style="margin:0 0 10px;font-size:14px"><b>${esc(TYPE[x.type] || "Document")}${x.date ? " · " + esc(x.date) : ""}</b><br>${esc(x.summary)}</p>`).join("")}
+    </div>
+    ${kv.length ? `<div class="card"><h2>Key numbers</h2><div class="kv">${kv.map(([a, b]) => `<span>${esc(a)}</span><span>${b}</span>`).join("")}</div></div>` : ""}
+    ${flags.length ? `<div class="card"><h2>Red flags <span class="pill r">${flags.length}</span></h2>${flags.map((f) => `<div class="flag ${esc(f.severity)}"><b>${esc(f.title)}${pg(f)}</b>${esc(f.detail)}</div>`).join("")}</div>` : ""}
+    ${d.goodSigns.length ? `<div class="card"><h2>Good signs</h2>${d.goodSigns.map((f) => `<div class="flag good"><b>${esc(f.title)}${pg(f)}</b>${esc(f.detail)}</div>`).join("")}</div>` : ""}
+    ${d.litigation.length ? `<div class="card"><h2>Lawsuits mentioned</h2>${d.litigation.map((f) => `<div class="flag medium">${esc(f.summary)}${pg(f)}</div>`).join("")}</div>` : ""}
+    ${d.questions.length ? `<div class="card"><h2>Questions to ask</h2><ol style="margin:0;padding-left:20px;font-size:14px;display:grid;gap:5px">${d.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ol><p class="sub">These are added to the Checklist email too.</p></div>` : ""}
+    <p class="sub">Read by AI from the documents you uploaded. Check every point against the page shown. Not legal, financial or engineering advice.</p>`;
+  box.innerHTML = html;
+  const ap = $("#applyBtn"); if (ap) ap.onclick = applyDecoded;
+  $("#printRep").onclick = () => printPages(["p-decoder"]);
+}
+function applyDecoded() {
+  const d = cur.decoded; if (!d) return; let changed = [];
+  const dues = d.monthlyDues.find((x) => x.amount > 0); if (dues) { cur.dues = String(Math.round(dues.amount)); changed.push("dues"); }
+  d.assessments.filter((a) => a.perUnit > 0).forEach((a) => {
+    if (!cur.assessments.some((x) => n(x.amount) === a.perUnit)) { cur.assessments.push({ desc: a.description.slice(0, 60), amount: String(a.perUnit), months: String(a.installments || 1), startsIn: "0" }); changed.push("assessment"); }
+  });
+  if (d.sirs?.mentioned && d.sirs.completed === true) cur.checklist.sirs = "y";
+  if (d.sirs?.mentioned && d.sirs.completed === false) cur.checklist.sirs = "n";
+  if (d.reserves?.waivedOrReduced) cur.checklist.noPause = "n";
+  if (d.litigation.length) cur.checklist.litig = "n";
+  if (d.assessments.length) cur.checklist.noAssess = "n";
+  persist(); fillForm(); renderAll();
+  toast(changed.length ? "Numbers added to your cost snapshot." : "Nothing new to add. Check the numbers by hand."); show("cost");
+}
+const SAMPLE = {
+  docs: [{ name: "Sample", type: "budget", date: "2026 budget", association: "Seaside Palms Condominium (sample)", summary: "The 2026 budget raises regular dues about 18% to $742/month for a 2-bedroom, mainly because the master insurance premium went up. Reserves are now funded at the level the SIRS recommends." },
+    { name: "Sample", type: "special_assessment_notice", date: "Sep 2026", summary: "The board approved a $6,000-per-unit assessment for concrete restoration found in the milestone inspection, payable in 12 monthly installments starting January 2027." }],
+  monthlyDues: [{ unit: "2-bedroom", amount: 742, page: 4, doc: "2026 Budget" }],
+  assessments: [{ description: "Concrete restoration (milestone Phase 2)", perUnit: 6000, installments: 12, status: "approved", page: 1, doc: "Assessment Notice" }],
+  reserves: { balance: 412000, percentFunded: 64, recommendedAnnual: 180000, budgetedAnnual: 180000, waivedOrReduced: false, page: 9, doc: "2026 Budget" },
+  sirs: { mentioned: true, completed: true, date: "Nov 2025", page: 9, doc: "2026 Budget" },
+  milestone: { mentioned: true, phase: "Phase 2 completed", repairsRequired: true, repairDeadline: "Dec 2027", page: 2, doc: "Assessment Notice" },
+  insurance: { annualPremium: 388000, windDeductible: "5% of building value", carrier: null, page: 6, doc: "2026 Budget" },
+  litigation: [],
+  redFlags: [{ title: "Approved $6,000 special assessment", detail: "$500/month for 12 months on top of dues, starting January 2027.", severity: "high", page: 1, doc: "Assessment Notice" },
+    { title: "Dues up about 18% this year", detail: "Driven by a large jump in the master insurance premium.", severity: "medium", page: 4, doc: "2026 Budget" },
+    { title: "5% windstorm deductible", detail: "After a hurricane, the deductible could be passed to owners as another assessment.", severity: "medium", page: 6, doc: "2026 Budget" }],
+  goodSigns: [{ title: "SIRS completed and reserves fully budgeted", detail: "The budget funds reserves at the SIRS-recommended amount; no waiver.", page: 9, doc: "2026 Budget" }],
+  questions: ["Is the $6,000 assessment the full cost of the concrete work, or could more be needed?", "Can the assessment be paid off in one lump sum, and is it due at closing if I buy before January 2027?", "What would each owner's share of the 5% wind deductible be after a major storm?"],
+};
+$("#sampleBtn").onclick = () => { renderReport(SAMPLE, true); $("#report").scrollIntoView({ behavior: "smooth" }); };
+
+async function handleReturn() {
+  const q = new URLSearchParams(location.search); const sid = q.get("session_id");
+  if (q.get("checkout") === "cancelled") $("#decStatus").textContent = "Checkout cancelled. Your free tools still work.";
+  if (sid) {
+    $("#decStatus").textContent = "Finishing your purchase…";
+    try { const { token: t } = await api("activate", { session_id: sid }); save(KEY_TOKEN, t); $("#decStatus").textContent = "Payment received. Upload your documents below."; }
+    catch { $("#decStatus").className = "status err"; $("#decStatus").textContent = "We couldn't confirm the payment yet. Refresh in a minute, or email support."; }
+  }
+  if (sid || q.get("checkout")) history.replaceState(null, "", location.pathname + location.hash);
+}
+
+/* ---------- start ---------- */
+function renderAll() { renderCost(); }
+renderSel(); fillForm(); renderAll();
+show(location.hash.slice(1) || "cost");
+handleReturn().then(refreshCredit).then(() => { if (location.hash === "#decoder") renderDecoder(); });
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+</script>
+</body>
+</html>
