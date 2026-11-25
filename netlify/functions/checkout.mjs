@@ -14,7 +14,7 @@ export default async (req) => {
       success_url: `${site}/?session_id={CHECKOUT_SESSION_ID}#decoder`,
       cancel_url: `${site}/?checkout=cancelled#decoder`,
       allow_promotion_codes: "true",
-      "payment_intent_data[metadata][docs_used]": "0",
+      "metadata[docs_used]": "0",
       "payment_intent_data[description]": "CondoCost Document Decoder report",
     });
     return json({ url: s.url });

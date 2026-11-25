@@ -61,23 +61,25 @@ export async function stripe(method, path, params) {
 }
 
 // One purchase = one report credit with up to DOCS_PER_REPORT documents.
-// Usage is stored in the Stripe PaymentIntent's metadata, so no database is needed.
+// Usage is stored in the Checkout Session's metadata (works for paid and 100%-off orders), so no database is needed.
 export async function reportCredit(token) {
-  if (env("FREE_REPORTS_FOR_TESTING") === "true") return { ok: true, used: 0, limit: 99, pi: null };
+  if (env("FREE_REPORTS_FOR_TESTING") === "true") return { ok: true, used: 0, limit: 99, session: null };
   const t = readToken(token);
   if (!t?.s) return { ok: false, reason: "no_purchase" };
   const session = await stripe("GET", `checkout/sessions/${encodeURIComponent(t.s)}`);
-  if (session.payment_status !== "paid" || !session.payment_intent) return { ok: false, reason: "not_paid" };
-  const pi = await stripe("GET", `payment_intents/${encodeURIComponent(session.payment_intent)}`);
-  if (pi.amount_refunded > 0 || pi.status !== "succeeded") return { ok: false, reason: "refunded" };
-  const used = parseInt(pi.metadata?.docs_used || "0", 10);
+  if (session.payment_status !== "paid" && session.payment_status !== "no_payment_required") return { ok: false, reason: "not_paid" };
+  if (session.payment_intent) {
+    const pi = await stripe("GET", `payment_intents/${encodeURIComponent(session.payment_intent)}`);
+    if (pi.amount_refunded > 0) return { ok: false, reason: "refunded" };
+  }
+  const used = parseInt(session.metadata?.docs_used || "0", 10);
   const limit = parseInt(env("DOCS_PER_REPORT", "6"), 10);
-  return { ok: used < limit, used, limit, pi: pi.id, reason: used < limit ? null : "limit_reached" };
+  return { ok: used < limit, used, limit, session: session.id, reason: used < limit ? null : "limit_reached" };
 }
 
-export async function useCredit(piId, used) {
-  if (!piId) return;
-  await stripe("POST", `payment_intents/${encodeURIComponent(piId)}`, { "metadata[docs_used]": String(used + 1) });
+export async function useCredit(sessionId, used) {
+  if (!sessionId) return;
+  await stripe("POST", `checkout/sessions/${encodeURIComponent(sessionId)}`, { "metadata[docs_used]": String(used + 1) });
 }
 
 /* ---------- Anthropic (Claude) ---------- */

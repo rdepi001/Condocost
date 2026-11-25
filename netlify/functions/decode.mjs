@@ -37,6 +37,6 @@ export default async (req) => {
     pdf: data,
     model: env("DOC_MODEL", "claude-sonnet-5-5"),
     maxTokens: 4000,
-    onDone: () => useCredit(credit.pi, credit.used),
+    onDone: () => useCredit(credit.session, credit.used),
   });
 };

@@ -7,7 +7,7 @@ export default async (req) => {
   if (typeof session_id !== "string" || !session_id.startsWith("cs_")) return fail("bad_request");
   try {
     const s = await stripe("GET", `checkout/sessions/${encodeURIComponent(session_id)}`);
-    if (s.payment_status !== "paid") return fail("not_paid", 402);
+    if (s.payment_status !== "paid" && s.payment_status !== "no_payment_required") return fail("not_paid", 402);
     return json({ token: signToken(s.id) });
   } catch (e) {
     return fail(e.code || "server_error", 500);
