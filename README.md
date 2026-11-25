@@ -39,3 +39,4 @@ Same as TagMatch: new GitHub repository `condocost` → upload this folder → N
 
 ## Google Play
 Same steps as TagMatch (pwabuilder.com → Android package → fill in `public/.well-known/assetlinks.json` → Play Console closed test). Before publishing the Android version, either hide the buy button there or enroll in Google's US external payment links program.
+.
